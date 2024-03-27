@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container mt-5">
+  <h2 align="center">Search in Thymeleaf Template</h2>
+  <form th:action="@{/search}" method="get">
+    <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find Title & Author" size="50" >
+    <button type="submit" class="btn btn-info" >Search</button>
+  </form>
+  <table class="table table-bordered table-sm mt-2">
+    <thead>
+    <tr>
+
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library Management</title>
+    <script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<header th:insert="blocks/headers :: header"></header>
+<div class="container my-5 col-md-6">
+    <table class="table table-striped table-hower">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Author</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="b :${book}">
+            <td th:text="${b.id}"></td>
+            <td th:text="${b.name}"></td>
+            <td th:text="${b.author}"></td>
+            <td th:text="${b.price}"></td>
+                <td><img src="" height="100px" width="100px"  th:src="@{${'/cover-images/' + b.imageName}}"></td>
+
+                <td><a style="color: red" th:href="@{/deleteMyList/{id}(id=${b.id})}"><i class="fa-sharp fa-solid fa-trash"></i> </a></td>
+
+        </tr>
+
+        </tbody>
+    </table></div>
+
+
+
+</body>
+</html>

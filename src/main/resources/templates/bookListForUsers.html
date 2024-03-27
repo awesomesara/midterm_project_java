@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="https://www.thymeleaf.com">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://kit.fontawesome.com/0faddc1af8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+
+<header th:insert="blocks/headers :: headerForUsers"></header>
+<div class="container my-5 col-md-6">
+  <table class="table table-striped table-hower">
+    <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Price</th>
+      <th scope="col">Image</th>
+      <th scope="col">Action</th>
+      <form class="col-md-4 offset-md-4" th:action="@{/available_books}">
+        <div class="mb-3">
+          <select name="keyword">
+            <tr2 th:each="l : ${listS}">
+              <option th:value="${l}" th:text="${l}"></option>
+            </tr2>
+
+          </select>
+        </div>
+        <button type="submit">Sort</button>
+      </form>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="b :${list}">
+      <td th:text="${b.id}"></td>
+      <td th:text="${b.name}"></td>
+      <td th:text="${b.author}"></td>
+      <td th:text="${b.price}"></td>
+      <td><img src="" height="100px" width="100px"  th:src="@{${'/productImages/' + b.imageName}}"></td>
+
+      <td>
+        <a class="btn btn-secondary btn-sm" th:href="@{/mylist/{id}(id=${b.id})}">Add To My Book</a>
+        <a style="color: blue" th:href="@{/editBook/{id}(id=${b. id})}"><i class="fa-solid fa-pen-to-square ms-4"></i></a>
+        <a style="color:red" th:href="@{deleteBook/{id}(id=${b.id})}"><i class="fa-sharp fa-solid fa-trash ms-4"></i></a>
+
+      </td>
+
+    </tr>
+
+    </tbody>
+  </table></div>
+
+
+</body>
+</html>
